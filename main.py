@@ -39,8 +39,8 @@ if st.button("💰 Calcular Precio de Alquiler", use_container_width=True):
     
     # 2. Definir la URL de tu API
     # ATENCIÓN: Por ahora usamos localhost. Al desplegar a la nube, cambiaremos esta URL.
-    API_URL = "http://127.0.0.1:8000/predict"
-    
+    #API_URL = "http://127.0.0.1:8000/predict"
+    API_URL = "https://adalab-challenge-tecnico-de-investigacion-production.up.railway.app/predict"
     # 3. Hacer la petición POST
     try:
         with st.spinner('Analizando el mercado inmobiliario...'):
