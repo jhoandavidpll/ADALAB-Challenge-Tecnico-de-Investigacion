@@ -1,5 +1,5 @@
 # 🏡 Predicción de Precios de Alquiler de Inmuebles en Ecuador 🇪🇨
-**Evaluación Técnica - Laboratorio de Ciencia de Datos ADA EPPN**
+**Evaluación Técnica - Laboratorio de Ciencia de Datos ADA EPN**
 
 Este repositorio contiene la solución integral al reto de selección para el puesto de Técnico de Investigación. El proyecto abarca todo el ciclo de vida de los datos: desde el Análisis Exploratorio (EDA) y la limpieza, hasta el entrenamiento de un modelo de Machine Learning y su despliegue en producción mediante una arquitectura de microservicios.
 
@@ -8,7 +8,10 @@ Este repositorio contiene la solución integral al reto de selección para el pu
 Se ha implementado una arquitectura separando el backend del frontend para garantizar escalabilidad y una mejor experiencia de usuario:
 
 * **🌐 Frontend (Interfaz Interactiva):** [Predictor de Alquileres - Streamlit](https://adalab-challenge-tecnico-de-investigacion-jp.streamlit.app/)
-* **⚙️ Backend (API REST - Swagger UI):** [Documentación de la API - FastAPI](https://adalab-challenge-tecnico-de-investigacion-production.up.railway.app/docs)
+![Interface Streamlit](img/streamlit_adalab.png)
+
+* **⚙️ Backend (API REST -  UI):** [Documentación de la API - FastAPI](https://adalab-challenge-tecnico-de-investigacion-production.up.railway.app/docs)
+![Documentación FastAPI](img/FastAPI_docs.png)
 
 ---
 
@@ -35,7 +38,7 @@ El análisis detallado y la extracción de *insights* se encuentran en `notebook
 **Principales acciones y hallazgos:**
 * **Limpieza y Normalización:** Se estandarizó la variable `Lugar` (conversión a minúsculas, eliminación de tildes y caracteres especiales) y se extrajeron valores numéricos limpios de la columna de dormitorios usando expresiones regulares para manejar registros inconsistentes (ej. "1 HABITACIÓN").
 * **Manejo de Nulos:** Se aplicó imputación por la mediana sectorizada para proteger la distribución general frente a propiedades con valores atípicos.
-* **Métricas de Negocio:** * Se analizó el **Premium por Habitación**, identificando los saltos de precio marginales al añadir cuartos adicionales en distintas zonas.
+* **Métricas de Negocio:** Se analizó el **Premium por Habitación**, identificando los saltos de precio marginales al añadir cuartos adicionales en distintas zonas.
   * Se diseñó la métrica **Tipo de Precio por Lugar** (Económico, Medio, Lujo). Se calcularon los cuartiles Q1 y Q3 agrupados por sector, lo que permite evaluar el costo de una propiedad en relación a su propio vecindario, eliminando el sesgo geográfico nacional.
 
   ## 🤖 Fase 2: Modelado de Machine Learning
@@ -50,6 +53,8 @@ El proceso de entrenamiento y selección de características está documentado e
 
   ## 🛠️ Fase 3: Despliegue de la API REST (Backend)
 La API fue construida con **FastAPI**, empaquetada en un contenedor **Docker** (asegurando la consistencia del entorno) y desplegada en **Railway**.
+### Consulta a la API
+![Consulta API](img/consulta_API.png)
 
 ### Ejemplo de Petición (cURL)
 La API está expuesta públicamente y puede ser consumida desde cualquier cliente HTTP. Prueba el siguiente comando en tu terminal para obtener una predicción en tiempo real:
@@ -76,7 +81,10 @@ curl -X 'POST' \
     "prediction":470.17
 }
 ```
-### 5. Instrucciones de Ejecución Local 💻
+![cURL API](img/cURL_API.png)
+
+---
+##  Instrucciones de Ejecución Local 💻
 
 Para reproducir este proyecto o ejecutar los notebooks en tu entorno local:
 
@@ -88,9 +96,13 @@ Para reproducir este proyecto o ejecutar los notebooks en tu entorno local:
 2. Crear y activar un entorno virtual: 
 ```bash
 python -m venv venv
-# En Windows:
+```
+#### En Windows:
+```bash
 venv\Scripts\activate
-# En Linux/Mac:
+```
+#### En Linux/Mac:
+```bash
 source venv/bin/activate
 ```
 3. Instalar dependencias
